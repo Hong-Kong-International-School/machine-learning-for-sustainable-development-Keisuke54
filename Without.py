@@ -9,20 +9,22 @@ import requests
 
 model = YOLO("yolov8n.pt")
 
-response = requests.get("https://static.photocdn.pt/images/articles/2019/10/02/Simple_Landscape_Photography_Tips_With_Tons_of_Impact.jpg")
+response = requests.get("https://deepstackpython.readthedocs.io/en/latest/_images/test-image3.jpg")
 image = Image.open(BytesIO(response.content))
 
 image = np.asarray(image)
 
 results = model.predict(image, conf=0.25)
+list = results[0].boxes.data
 
-print(results[0].boxes.boxes)
+for result in list:
+    print(result[0])
 
-plt.imshow(image)
-#get current axes
-ax = plt.gca()
-#hide x-axis
-ax.get_xaxis().set_visible(False)
-#hide y-axis 
-ax.get_yaxis().set_visible(False)
-plt.show()
+
+#plt.imshow(image)
+#ax = plt.gca()
+#ax.get_xaxis().set_visible(False)
+#ax.get_yaxis().set_visible(False)
+#plt.show()
+
+
