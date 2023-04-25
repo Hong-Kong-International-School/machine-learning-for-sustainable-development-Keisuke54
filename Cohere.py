@@ -1,5 +1,4 @@
 # pip install cohere
-
 import cohere
 # API key (trial)
 co = cohere.Client('VgR2hXk1OC9UOiTWFYE1rTodw1GkT7xYKI6MsLIS') 
