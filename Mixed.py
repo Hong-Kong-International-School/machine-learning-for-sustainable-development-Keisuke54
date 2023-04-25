@@ -1,4 +1,3 @@
-# execute "pip install ultralytics" on terminal
 from ultralytics import YOLO
 from PIL import Image
 from io import BytesIO
@@ -28,7 +27,7 @@ for result in results:
     text = f"{label}: {confidence:.2f}"
     cv2.putText(image, text, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
-
 plt.imshow(image)
 plt.axis('off')
 plt.show()
+
