@@ -16,7 +16,6 @@ image = np.asarray(image)
 
 predict = model.predict(image, conf=0.25)
 results = predict[0].boxes.data
-print(results)
 
 for result in results:
     x1 = int(result[0])
