@@ -1,33 +1,54 @@
 from ultralytics import YOLO
+from gtts import gTTS
 from PIL import Image
 from io import BytesIO
 import numpy as np
 import matplotlib.pyplot as plt
+import cohere
 import cv2
 import requests
 
-model = YOLO("yolov8n.pt")
-
-response = requests.get("https://deepstackpython.readthedocs.io/en/latest/_images/test-image3.jpg")
+response = requests.get('https://deepstackpython.readthedocs.io/en/latest/_images/test-image3.jpg')
 image = Image.open(BytesIO(response.content))
-
 image = np.asarray(image)
+
+model = YOLO("yolov8n.pt")
+co = cohere.Client('VgR2hXk1OC9UOiTWFYE1rTodw1GkT7xYKI6MsLIS') 
+yoloLabels = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
 
 predict = model.predict(image, conf=0.25)
 results = predict[0].boxes.data
-
+talk1 = 'In this image, I can see '
+talk2 = ''
 for result in results:
     x1 = int(result[0])
     y1 = int(result[1])
     x2 = int(result[2])
     y2 = int(result[3])
-    label = result[4]
-    confidence = result[5]
+    confidence = result[4]
+    label = yoloLabels[int(result[5])]
     cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
     text = f"{label}: {confidence:.2f}"
     cv2.putText(image, text, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+    
+    talk1 = talk1 + label + ", "
+    response = co.generate(
+        model='command-xlarge-nightly',
+        prompt='how to draw ' + label,
+        max_tokens=300,
+        temperature=0.9,
+        k=0,
+        stop_sequences=[],
+        return_likelihoods='NONE')
+    talk2 = talk2 + f'To draw {label} {response.generations[0].text}, '
 
 plt.imshow(image)
 plt.axis('off')
-plt.show()
 
+mytext = talk1 + talk2
+print(mytext)
+
+#audio = gTTS(text=mytext, lang="en", slow=False)
+#audio.save("drawingguide.mp3")
+
+plt.show()
