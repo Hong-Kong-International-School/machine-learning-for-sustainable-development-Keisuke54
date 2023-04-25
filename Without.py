@@ -16,13 +16,13 @@ image = np.asarray(image)
 
 predict = model.predict(image, conf=0.25)
 results = predict[0].boxes.data
-print(results)
+
 for result in results:
     x1 = int(result[0])
     y1 = int(result[1])
     x2 = int(result[2])
     y2 = int(result[3])
-    label = int(result[4])
+    label = result[4]
     confidence = result[5]
     cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
     text = f"{label}: {confidence:.2f}"
@@ -32,9 +32,3 @@ for result in results:
 plt.imshow(image)
 plt.axis('off')
 plt.show()
-
-#ax = plt.gca()
-#ax.get_xaxis().set_visible(False)
-#ax.get_yaxis().set_visible(False)
-
-
