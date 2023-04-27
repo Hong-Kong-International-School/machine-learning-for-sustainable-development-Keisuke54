@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import cohere
 import cv2
 import requests
-
+ 
 response = requests.get('https://deepstackpython.readthedocs.io/en/latest/_images/test-image3.jpg')
 image = Image.open(BytesIO(response.content))
 image = np.asarray(image)
