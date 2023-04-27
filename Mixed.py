@@ -18,8 +18,11 @@ yoloLabels = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'trai
 
 predict = model.predict(image, conf=0.25)
 results = predict[0].boxes.data
+
 talk1 = 'In this image, I can see '
 talk2 = ''
+detected = []
+
 for result in results:
     x1 = int(result[0])
     y1 = int(result[1])
@@ -27,28 +30,37 @@ for result in results:
     y2 = int(result[3])
     confidence = result[4]
     label = yoloLabels[int(result[5])]
+
     cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
     text = f"{label}: {confidence:.2f}"
     cv2.putText(image, text, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-    
-    talk1 = talk1 + label + ", "
+
+    detected.append(label)
+
+cleared = []
+count = []
+for obj in detected:
+    if obj not in cleared:
+        cleared.append(obj)
+
+for object in cleared:
+    count = str(detected.count(object))
+    talk1 = talk1 + count + ' ' + object + ', '
     response = co.generate(
         model='command-xlarge-nightly',
-        prompt='how to draw ' + label,
+        prompt='how to draw ' + object,
         max_tokens=300,
         temperature=0.9,
         k=0,
         stop_sequences=[],
         return_likelihoods='NONE')
-    talk2 = talk2 + f'To draw {label} {response.generations[0].text}, '
-
-plt.imshow(image)
-plt.axis('off')
+    talk2 = talk2 + f'To draw {object}, {response.generations[0].text} '
 
 mytext = talk1 + talk2
 print(mytext)
+audio = gTTS(text=mytext, lang="en", slow=False)
+audio.save("drawingguide.mp3")
 
-#audio = gTTS(text=mytext, lang="en", slow=False)
-#audio.save("drawingguide.mp3")
-
+plt.imshow(image)
+plt.axis('off')
 plt.show()
