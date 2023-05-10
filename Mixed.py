@@ -47,7 +47,7 @@ for object in cleared:
     count = str(detected.count(object))
     talk1 = talk1 + count + ' ' + object + ', '
     response = co.generate(
-        model='command-xlarge-nightly',
+        model='command-nightly',
         prompt='how to draw ' + object,
         max_tokens=300,
         temperature=0.9,
