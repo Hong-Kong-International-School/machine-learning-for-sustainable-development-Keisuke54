@@ -14,4 +14,7 @@ response = co.generate(
   stop_sequences=[],
   return_likelihoods='NONE')
 
-print('Prediction: {}'.format(response.generations[0].text))
+result = response.generations[0].text
+print('Prediction: {}'.format(result))
+print(' ')
+print(result.strip('\n'))
