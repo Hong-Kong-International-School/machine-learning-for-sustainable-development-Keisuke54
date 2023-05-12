@@ -1,4 +1,3 @@
-
 import cohere
 import time
 

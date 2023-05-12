@@ -1,5 +1,3 @@
-# test
-
 A = "apple"
 B = "cake"
 

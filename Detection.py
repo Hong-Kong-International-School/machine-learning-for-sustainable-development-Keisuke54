@@ -1,4 +1,4 @@
-# execute "pip install ultralytics" on terminal
+# pip install ultralytics
 from ultralytics import YOLO
 from PIL import Image
 from io import BytesIO
