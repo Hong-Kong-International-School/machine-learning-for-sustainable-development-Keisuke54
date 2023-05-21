@@ -13,8 +13,6 @@ model = whisper.load_model("base")
 
 result = model.transcribe("prompt.mp3")
 
-print(result["text"])
-
 # Getting conversation list from the modified version of conversation file (conversation2)
 from conversation2 import conversation
 
@@ -49,11 +47,10 @@ with tf.device('/cpu:0'):
     
     modelF = load_model('model.h5', compile=False)
     modelF.compile(loss="sparse_categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
-    seed_text = result["text"]
+
+    seed_text = "Question: " + result["text"]
     
     generated_text = generate_text(seed_text, modelF, tokenizer, 100, num_chars_to_generate=300)
-    print(generated_text)
 
-mytext = generated_text
-audio = gTTS(text=mytext, lang="en", slow=False)
+audio = gTTS(text=generated_text, lang="en", slow=False)
 audio.save("response.mp3")
