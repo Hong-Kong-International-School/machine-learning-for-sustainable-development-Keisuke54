@@ -47,7 +47,7 @@ epochs = 100
 batch_size = 32
 model.fit(input_sequences, output_sequences, epochs=epochs, batch_size=batch_size)
 
+print('end')
+
 model.save('/content/model.h5')
 model.save_weights('/content/weights.h5')
-
-print('end')
