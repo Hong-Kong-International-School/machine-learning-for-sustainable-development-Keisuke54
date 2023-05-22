@@ -11,6 +11,7 @@ from gtts import gTTS
 # loading Whisper model
 model = whisper.load_model("base")
 
+# insert your prompt speech 
 result = model.transcribe("prompt.mp3")
 
 # Getting conversation list from the modified version of conversation file (conversation2)
@@ -53,4 +54,5 @@ with tf.device('/CPU:0'):
     generated_text = generate_text(seed_text, modelF, tokenizer, 100, num_chars_to_generate=400)
 
 audio = gTTS(text=generated_text, lang="en", slow=False)
+# output speech is saved in response.mp3 file 
 audio.save("response.mp3")
