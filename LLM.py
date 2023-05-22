@@ -1,3 +1,5 @@
+# code run in Kaggle: https://www.kaggle.com/code/keisukenakamura54/llm-work
+
 import numpy as np
 import tensorflow as tf
 
