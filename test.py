@@ -5,7 +5,7 @@ from keras.models import load_model
 
 from conversation2 import conversation
 
-with tf.device('/cpu:0'):
+with tf.device('/CPU:0'):
     Tokenizer = tf.keras.preprocessing.text.Tokenizer
     
     pad_sequences = tf.keras.preprocessing.sequence.pad_sequences

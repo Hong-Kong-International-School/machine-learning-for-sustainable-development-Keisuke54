@@ -16,7 +16,7 @@ result = model.transcribe("prompt.mp3")
 # Getting conversation list from the modified version of conversation file (conversation2)
 from conversation2 import conversation
 
-with tf.device('/cpu:0'):
+with tf.device('/CPU:0'):
     Tokenizer = tf.keras.preprocessing.text.Tokenizer
     
     pad_sequences = tf.keras.preprocessing.sequence.pad_sequences
