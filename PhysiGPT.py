@@ -50,7 +50,7 @@ with tf.device('/CPU:0'):
 
     seed_text = "Question: " + result["text"]
     
-    generated_text = generate_text(seed_text, modelF, tokenizer, 100, num_chars_to_generate=300)
+    generated_text = generate_text(seed_text, modelF, tokenizer, 100, num_chars_to_generate=400)
 
 audio = gTTS(text=generated_text, lang="en", slow=False)
 audio.save("response.mp3")
