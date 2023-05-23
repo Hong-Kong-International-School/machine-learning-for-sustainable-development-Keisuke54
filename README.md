@@ -3,20 +3,20 @@
 ## Background
 In recent days, many large language models (LLMs) are being published, but a lot of forefront models are with subscription. There is a growing concern that the financial accesibility to those learning material will bring a huge inequality in education. Hence, this project aims to achieve a model that specializes in AP Physics C to support people's learning. 
 
-SDG's goal: **Quality Educaiton**
+### SDG's goal **Quality Educaiton**
 
 ## System details
 The system included in this repository is speech to text (voice recognition), the main language model about AP Physics C, and text to speech to achieve Q&A expereince for physics concepts. 
 
-### What it does
+* ### What it does
 You speak out your AP Physics C question to the modle. The model understands the speech and responds to your question by speeaking out. 
 
-### How it works
+* ### How it works
 The model recognizes speech via OpenAI's Whisper speech recognition model and outputs text 
 The converted text is passed through the langauge model and get the response
 The response is then converted into speech via Google's Text-to-Speech model 
 
-### How to install it + How to use it
+* ### How to install it + How to use it
 Given the limitation in time to work, there is no app to downlod this model yet (real time Q&A app), but you can doanload the PihsiGPT file in this repository and save your recording in mp3 file and to get output speech. 
 
 ## Model Details
