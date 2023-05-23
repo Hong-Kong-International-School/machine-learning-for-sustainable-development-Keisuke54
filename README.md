@@ -6,7 +6,7 @@ In recent days, many large language models (LLMs) are being published, but a lot
 ### SDG's goal: **Quality Educaiton**
 
 # File description
-- `DataGeneration.py` contains training data generation through amplifying initial questions and answering to them via Cohere API
+- `DataGeneration.py` contains training-data generation through amplifying initial questions and answering to them via Cohere API
 - `conversation.py` is the original ouput from running `DataGeneration.py`
 - `conversation2.py` is the inspected version of `conversation.py` which removed conversations that seemed to cause inaccuracy
 - `LLM.py` contains the architecture and training of the main language model 
@@ -20,9 +20,9 @@ The system included in this repository is speech to text (voice recognition), th
 You speak out your AP Physics C question to the model. The model understands the speech and responds to your question by speeaking out. 
 
 * ### How it works
-The model recognizes speech via OpenAI's Whisper speech recognition model and outputs text 
-The converted text is passed through the langauge model and get the response
-The response is then converted into speech via Google's Text-to-Speech model 
+1. The model recognizes speech via OpenAI's Whisper speech recognition model and outputs text
+2. The converted text is passed through the langauge model and get the response
+3. The response is then converted into speech via Google's Text-to-Speech model 
 
 * ### How to install it + How to use it
 Given the limitation in time to work, there is no real time Q&A app to downlod yet. You first download the trained model 'model.h5', and save your recording in mp3 file (or other file formats Whisper accepts). Run 'PhysiGPT.py' file in this repository to get the output speech. 
