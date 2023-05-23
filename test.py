@@ -34,7 +34,7 @@ with tf.device('/CPU:0'):
     
     modelF = load_model('model.h5', compile=False)
     modelF.compile(loss="sparse_categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
-    seed_text = "How can I calculate resistance?"
+    seed_text = "How can I calculate torque?"
     
     generated_text = generate_text(seed_text, modelF, tokenizer, 100, num_chars_to_generate=400)
     print(generated_text)
