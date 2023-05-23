@@ -3,7 +3,7 @@
 ## Background
 In recent days, many large language models (LLMs) are being published, but a lot of forefront models are with subscription. There is a growing concern that the financial accesibility to those learning material will bring a huge inequality in education. Hence, this project aims to achieve a model that specializes in AP Physics C to support people's learning. 
 
-### SDG's goal **Quality Educaiton**
+### SDG's goal: **Quality Educaiton**
 
 ## System details
 The system included in this repository is speech to text (voice recognition), the main language model about AP Physics C, and text to speech to achieve Q&A expereince for physics concepts. 
@@ -17,10 +17,10 @@ The converted text is passed through the langauge model and get the response
 The response is then converted into speech via Google's Text-to-Speech model 
 
 * ### How to install it + How to use it
-Given the limitation in time to work, there is no app to downlod this model yet (real time Q&A app), but you can doanload the PihsiGPT file in this repository and save your recording in mp3 file and to get output speech. 
+Given the limitation in time to work, there is no app to downlod this model yet (real time Q&A app). You first download the pretrained model 'model.h5', and save your recording in mp3 file. Run 'PhysiGPT.py' file in this repository. 
 
 ## Model Details
-The main large language model is built with karas sequential model consisting of Embedding, two LSTM, and Dense layers. Embedding layer is responsible for 
+The main large language model is built with karas sequential model consisting of Embedding, two LSTM, and Dense layers. The first layer is an embedding layer that takes the input sequence and maps each word to a 32-dimensional vector. The second and third layers are LSTM layers that have 128 units each. The fourth layer is a dense layer that outputs a probability distribution over the vocabulary of the model1.
 
 The idea of this sequantial model as inspired by the [work by Franz Geffke](https://f-a.nz/dev/develop-your-own-llm-like-chatgpt-with-tensorflow-and-keras/).
 
@@ -40,6 +40,6 @@ The initial idea was to train the language model with a single conversation and 
 The language model trained specific for AP Physics C returns logical sentences in most trials, but it can be a broken repitiion of words. Also, although the sentences are compelte, the content of the responses are far away from the exact answer. For example, asking toque question which is from mechanics will return magnetic flux which is from electricity and magnetism. This is specualted to be mainly beacause of the lack of data, but it is not always the case. When the model was trained with more dataset, the training time was signifiacntly longerbut the accuracy did not improve. The ouput began with more reasonable starting words but the following characters/words became worse, such sa repeating the same words infinitely. 
 
 ## Future work
-Exploring the tradeoff between the logical starting wordsa nd rhe accuracy of the model will be interesting. 
-Explring differetn model architecture for better text recognition. 
-Making an app for PhisiGPT.py model will enable practical usage of this system. 
+Exploring the tradeoff between the logical starting wordsa and the accuracy of the model when changing the number of training data
+Explring differetn model architecture 
+Making an app for PhisiGPT for real time Q&A experience 
