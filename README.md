@@ -6,12 +6,12 @@ In recent days, many large language models (LLMs) are being published, but a lot
 ### SDG's goal: **Quality Educaiton**
 
 # File description
- `DataGeneration.py` contains training data generation through amplifying initial questions and answering to them via Cohere API
- `conversation.py` is the original ouput from running `DataGeneration.py`
- `conversation2.py` is the inspected version of `conversation.py` which removed conversations that seemed to cause inaccuracy
- `LLM.py` contains the architecture and training of the main language model 
- `test.py` contains testing attempts of the language model from `LLM.py` 
- `PhysiGPT.py` contains the final system for this project 
+- `DataGeneration.py` contains training data generation through amplifying initial questions and answering to them via Cohere API
+- `conversation.py` is the original ouput from running `DataGeneration.py`
+- `conversation2.py` is the inspected version of `conversation.py` which removed conversations that seemed to cause inaccuracy
+- `LLM.py` contains the architecture and training of the main language model 
+- `test.py` contains testing attempts of the language model from `LLM.py` 
+- `PhysiGPT.py` contains the final system for this project 
 
 ## System details
 The system included in this repository is speech to text (voice recognition), the main language model about AP Physics C, and text to speech to achieve Q&A expereince for physics concepts. 
