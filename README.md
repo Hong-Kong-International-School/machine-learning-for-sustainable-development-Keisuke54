@@ -62,7 +62,7 @@ This is mainly beacause of the lack of training data, but it seems that it's not
 In addition, when generating a response, the model does not recognize when to complete the sentence from a given number of characters to generate. This causes the response to be cut in the middle, start generating unnecessary content, or repeating the same words. 
 
 ## Future work
-Exploring the tradeoff between the logical starting words and the accuracy of the model when changing the number of training data
-Exploring different model architecture, retraining pretrained model like GPT2
-Exploring how to complete sentence with a given number of character to generate
-Making an app for PhisiGPT for real time Q&A experience 
+* Exploring the tradeoff between the logical starting words and the accuracy of the model when changing the number of training data
+* Exploring different model architecture
+* Exploring how to complete sentence with a given number of character to generate
+* Making an app for PhisiGPT for real time Q&A experience 
