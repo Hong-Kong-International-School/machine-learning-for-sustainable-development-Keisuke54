@@ -51,5 +51,5 @@ model.fit(input_sequences, output_sequences, epochs=epochs, batch_size=batch_siz
 
 print('end')
 
-model.save('/content/model.h5')
-model.save_weights('/content/weights.h5')
+model.save('/kaggle/working/model.h5')
+model.save_weights('/kaggle/working/weights.h5')
