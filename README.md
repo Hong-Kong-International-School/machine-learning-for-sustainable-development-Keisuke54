@@ -10,6 +10,7 @@ In recent days, many large language models (LLMs) are being published, but a lot
 - `conversation.py` is the original ouput from running `DataGeneration.py`
 - `conversation2.py` is the inspected version of `conversation.py` which removed conversations that seemed to cause inaccuracy
 - `LLM.py` contains the architecture and training of the main language model 
+[trainig was done in Kaggle](https://www.kaggle.com/code/keisukenakamura54/llm-work)
 - `test.py` contains testing attempts of the language model from `LLM.py` 
 - `PhysiGPT.py` contains the final system for this project 
 
