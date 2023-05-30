@@ -2,7 +2,7 @@ import cohere
 import time
 
 # API key 
-co = cohere.Client('VgR2hXk1OC9UOiTWFYE1rTodw1GkT7xYKI6MsLIS') 
+co = cohere.Client('your Cohere API key') 
 
 qList = ['What kind of concepts do I need to ask for AP Physics C?', 
          'Explain the concept of a normal force in physics.', 
